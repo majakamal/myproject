@@ -1,4 +1,4 @@
-  projects
+
   @extends('layouts.layout')
 
   @section('content')
@@ -6,8 +6,9 @@
            
             <div class="content">
                 <div class="title m-b-md">
-                    Project list
+                    beverages list
                 </div>
+
            <p>{{ $type }} - {{$base}} - {{$cost}}</p>
 
            

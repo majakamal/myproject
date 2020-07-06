@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +13,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
 
+// pizza routes
+Route::get('/beverages', 'BeverageController@index')->middleware('auth');
+Route::get('/beverages/create', 'BeverageController@create');
+Route::post('/beverages', 'BeverageController@store');
+Route::get('/beverages/{id}', 'BeverageController@show')->middleware('auth');
+Route::delete('/beverages/{id}', 'BeverageController@destroy')->middleware('auth'); 
 
+Auth::routes();
 
-Route::get('/projects', function () {
-
-    $project = [
-        'type' => 'real time monitoring system',
-        'base' => 'NCS',
-        'cost' => '100'
-    ];
-    return view('projects', $project);
-});
+Route::get('/home', 'HomeController@index')->name('home');
